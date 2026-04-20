@@ -1,0 +1,12 @@
+services:
+  app:
+    build:
+      context: .
+    container_name: child-tracking
+    env_file:
+      - .env
+    ports:
+      - "${APP_BIND_IP:-0.0.0.0}:${APP_PORT:-3000}:3000"
+    volumes:
+      - ./data:/app/data
+    restart: unless-stopped
